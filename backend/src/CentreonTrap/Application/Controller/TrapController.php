@@ -21,7 +21,7 @@
  */
 declare(strict_types=1);
 
-namespace CentreonDummy\Application\Controller;
+namespace CentreonTrap\Application\Controller;
 
 use CentreonDummy\Domain\Interfaces\TrapServiceInterface;
 use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
@@ -39,16 +39,16 @@ class TrapController extends AbstractFOSRestController
     /**
      * @var TrapServiceInterface
      */
-    private $dummyService;
+    private $trapService;
 
     /**
      * TrapController constructor.
      *
-     * @param TrapServiceInterface $dummyService
+     * @param TrapServiceInterface $trapService
      */
-    public function __construct(TrapServiceInterface $dummyService)
+    public function __construct(TrapServiceInterface $trapService)
     {
-        $this->dummyService = $dummyService;
+        $this->trapService = $trapService;
     }
 
     /**
@@ -57,14 +57,14 @@ class TrapController extends AbstractFOSRestController
      * @param RequestParametersInterface $requestParameters
      * @return View
      */
-    public function findDummies(RequestParametersInterface $requestParameters): View
+    public function findTraps(RequestParametersInterface $requestParameters): View
     {
-        $dummies = $this->dummyService->findDummies();
+        $traps = $this->trapService->findtraps();
 
-        $context = (new Context())->setGroups(['dummy_main']);
+        $context = (new Context())->setGroups(['trap_main']);
 
         return $this->view([
-            'result' => $dummies,
+            'result' => $traps,
             'meta' => $requestParameters->toArray(),
         ])->setContext($context);
     }
