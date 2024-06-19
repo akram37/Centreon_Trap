@@ -13,9 +13,9 @@
  */
 declare(strict_types=1);
 
-namespace CentreonDummy\Domain\Interfaces;
+namespace CentreonTrap\Domain\Interfaces;
 
-use CentreonDummy\Domain\Trap;
+use CentreonTrap\Domain\Trap;
 
 interface TrapRepositoryInterface
 {

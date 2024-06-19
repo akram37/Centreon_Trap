@@ -1,7 +1,7 @@
 jms_serializer:
   metadata:
     directories:
-      CentreonDummy:
+      CentreonTrap:
         namespace_prefix: "CentreonTrap\\Domain"
         path: '%kernel.root_dir%/../config/packages/serializer/CentreonTrap'
 
@@ -11,5 +11,5 @@ services:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, controller...
 
-  CentreonDummy\:
+  CentreonTrap\:
     resource: '../../../src/CentreonTrap/*'

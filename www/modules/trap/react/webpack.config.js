@@ -16,7 +16,7 @@ const moduleConfiguration = getModuleConfiguration({
 
 const entries = {
   'hooks/header/topCounter/index': './hooks/header/topCounter/index.tsx',
-  'pages/home/dummy/index': './pages/home/trap/index.tsx',
+  'pages/home/trap/index': './pages/home/trap/index.tsx',
 };
 
 module.exports = (jscTransformConfiguration) =>
@@ -25,11 +25,11 @@ module.exports = (jscTransformConfiguration) =>
       jscTransformConfiguration,
       moduleFederationConfig: {
         exposes: {
-          './dummy': './pages/home/trap/index',
+          './trap': './pages/home/trap/index',
           './monitoring/hooks/topCounter': './hooks/header/topCounter/index',
         },
       },
-      moduleName: 'centreonDummy',
+      moduleName: 'centreonTrap',
     }),
     moduleConfiguration,
     {

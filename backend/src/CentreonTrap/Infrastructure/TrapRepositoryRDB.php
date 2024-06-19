@@ -27,8 +27,8 @@ use Centreon\Domain\RequestParameters\RequestParameters;
 use Centreon\Infrastructure\DatabaseConnection;
 use Centreon\Infrastructure\Repository\AbstractRepositoryDRB;
 use Centreon\Infrastructure\RequestParameters\SqlRequestParametersTranslator;
-use CentreonDummy\Domain\Trap;
-use CentreonDummy\Domain\Interfaces\TrapRepositoryInterface;
+use CentreonTrap\Domain\Trap;
+use CentreonTrap\Domain\Interfaces\TrapRepositoryInterface;
 use Centreon\Domain\Entity\EntityCreator;
 
 class TrapRepositoryRDB extends AbstractRepositoryDRB implements TrapRepositoryInterface

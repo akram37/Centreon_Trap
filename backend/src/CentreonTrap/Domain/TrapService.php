@@ -23,8 +23,8 @@ declare(strict_types=1);
 
 namespace CentreonTrap\Domain;
 
-use CentreonDummy\Domain\Interfaces\TrapServiceInterface;
-use CentreonDummy\Domain\Interfaces\TrapRepositoryInterface;
+use CentreonTrap\Domain\Interfaces\TrapServiceInterface;
+use CentreonTrap\Domain\Interfaces\TrapRepositoryInterface;
 
 class TrapService implements TrapServiceInterface
 {
@@ -45,7 +45,7 @@ class TrapService implements TrapServiceInterface
     /**
      * @inheritDoc
      */
-    public function findDummies(): array
+    public function findTraps(): array
     {
         return $this->trapRepository->findTraps();
     }
