@@ -1,0 +1,14 @@
+CentreonTrap\DomainTrap:
+  properties:
+    id:
+      type: int
+      groups:
+        - 'trap_main'
+    name:
+      type: string
+      groups:
+        - 'trap_main'
+    description:
+      type: string
+      groups:
+        - 'trap_main'

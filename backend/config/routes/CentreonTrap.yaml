@@ -1,0 +1,7 @@
+trap:
+    prefix: "/{base_uri}api/{version}"
+    resource: '../../www/modules/trap/routes/CentreonTrap.yaml'
+    defaults:
+        base_uri: "centreon/"
+    requirements:
+        base_uri: "(.+/)|.{0}"

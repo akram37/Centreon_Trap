@@ -1,0 +1,6 @@
+# backend development files
+vendor/
+
+# frontend development files
+www/modules/trap/react/node_modules
+www/modules/trap/static

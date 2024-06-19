@@ -1,0 +1,5 @@
+trap.findTraps:
+  methods: GET
+  path: /trap/traps
+  controller: 'CentreonTrap\Application\Controller\TrapController::findTraps'
+  condition: "request.attributes.get('version') >= 20.10"
