@@ -25,10 +25,12 @@ namespace CentreonTrap\Application\Controller;
 
 use CentreonTrap\Domain\Interfaces\TrapServiceInterface;
 use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
-use Symfony\Component\HttpFoundation\Response;
+use CentreonTrap\Domain\Trap;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * This class is designed to manage all API REST requests concerning the dummies
@@ -86,10 +88,22 @@ class TrapController extends AbstractFOSRestController
     public function createTrap(Request $request): View
     {
         $data = json_decode($request->getContent(), true);
+
+        // Validate the data (basic validation, expand as needed)
+        if (!isset($data['name']) || !isset($data['description'])) {
+            return $this->view(['status' => 'Invalid data'], Response::HTTP_BAD_REQUEST);
+        }
+
         $trap = new Trap();
         $trap->setName($data['name']);
         $trap->setDescription($data['description']);
-        $this->trapService->createTrap($trap);
+
+        // Assuming createTrap method returns the created trap entity or throws an exception
+        try {
+            $this->trapService->createTrap($trap);
+        } catch (\Exception $e) {
+            return $this->view(['status' => 'Error creating trap', 'error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
 
         return $this->view(['status' => 'Trap created'], Response::HTTP_CREATED);
     }

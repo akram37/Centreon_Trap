@@ -6,7 +6,7 @@ trap.findTraps:
 
 trap.findTrap:
   methods: GET
-  path: /trap/trap/{id}
+  path: /trap/{id}
   controller: 'CentreonTrap\Application\Controller\TrapController::findTrap'
   condition: "request.attributes.get('version') >= 20.10"
   requirements:
@@ -14,7 +14,7 @@ trap.findTrap:
 
 trap.createTrap:
   methods: POST
-  path: /trap/create/
+  path: /trap/create
   controller: 'CentreonTrap\Application\Controller\TrapController::createTrap'
   condition: "request.attributes.get('version') >= 20.10"
 
