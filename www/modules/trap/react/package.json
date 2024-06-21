@@ -1,7 +1,7 @@
 {
-  "name": "centreon-dummy",
+  "name": "centreon-trap",
   "version": "22.10.0",
-  "description": "Centreon Dummy Module",
+  "description": "Centreon Trap Module",
   "scripts": {
     "build": "webpack --mode production --config ./webpack.config.prod.js",
     "build:dev": "webpack --mode=development --config ./webpack.config.dev.js",

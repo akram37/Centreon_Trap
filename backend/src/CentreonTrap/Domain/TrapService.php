@@ -49,4 +49,9 @@ class TrapService implements TrapServiceInterface
     {
         return $this->trapRepository->findTraps();
     }
+
+    public function findTrap(int $id): ?Trap
+    {
+        return $this->trapRepository->findTrap($id);
+    }
 }

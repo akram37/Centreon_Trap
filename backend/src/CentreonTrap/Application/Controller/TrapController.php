@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 namespace CentreonTrap\Application\Controller;
 
-use CentreonDummy\Domain\Interfaces\TrapServiceInterface;
+use CentreonTrap\Domain\Interfaces\TrapServiceInterface;
 use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -68,4 +68,6 @@ class TrapController extends AbstractFOSRestController
             'meta' => $requestParameters->toArray(),
         ])->setContext($context);
     }
+
+
 }

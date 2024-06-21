@@ -28,9 +28,11 @@ use CentreonTrap\Domain\Trap;
 interface TrapServiceInterface
 {
     /**
-     * Find dummies.
+     * Find traps.
      *
      * @return traps[]
      */
     public function findTraps(): array;
+
+    public function findTrap(int $id) :?Trap;
 }

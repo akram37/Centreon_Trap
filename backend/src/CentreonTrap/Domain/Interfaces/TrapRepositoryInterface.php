@@ -20,9 +20,11 @@ use CentreonTrap\Domain\Trap;
 interface TrapRepositoryInterface
 {
     /**
-     * Find all dummies.
+     * Find all traps.
      *
      * @return Traps[]
      */
     public function findTraps(): array;
+
+    public function findTrap(int $id) :?Trap;
 }

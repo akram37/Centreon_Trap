@@ -5,7 +5,7 @@
 --
 
 INSERT INTO `topology` (`topology_name`, `topology_parent`, `topology_page`, `topology_order`, `topology_group`, `topology_url`, `topology_url_opt`, `is_react`)
-VALUES ('Trap Menu Entry', '1', '111', '10', '1', '/home/trap', NULL, '1');
+VALUES ('Trap Menu Entry', '1', '112', '11', '1', '/home/trap', NULL, '1');
 
 
 --

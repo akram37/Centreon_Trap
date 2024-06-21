@@ -99,4 +99,26 @@ class TrapRepositoryRDB extends AbstractRepositoryDRB implements TrapRepositoryI
 
         return $traps;
     }
+
+
+    public function findTrap(int $id): ?Trap
+    {
+        $request = $this->translateDbName(
+            'SELECT traps.* FROM `:db`.mod_traps_objects traps WHERE traps.id = :id'
+        );
+
+        $statement = $this->db->prepare($request);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        if ($result === false) {
+            return null;
+        }
+
+        return EntityCreator::createEntityByArray(
+            Trap::class,
+            $result
+        );
+    }
 }

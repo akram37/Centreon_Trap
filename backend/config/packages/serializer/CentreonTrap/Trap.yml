@@ -1,4 +1,4 @@
-CentreonTrap\DomainTrap:
+CentreonTrap\Domain\Trap:
   properties:
     id:
       type: int

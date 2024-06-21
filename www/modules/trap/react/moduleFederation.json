@@ -1,16 +1,16 @@
 {
   "federatedPages": [
     {
-      "component": "./dummy",
-      "route": "/home/dummy"
+      "component": "./trap",
+      "route": "/home/trap"
     }
   ],
   "federatedComponentsConfiguration": {
-    "path": "/dummy/header/topCounter",
+    "path": "/trap/header/topCounter",
     "federatedComponents": [
       "./monitoring/hooks/topCounter"
     ]
   },
-  "moduleFederationName": "centreonDummy",
-  "moduleName": "dummy"
+  "moduleFederationName": "centreonTrap",
+  "moduleName": "trap"
 }
