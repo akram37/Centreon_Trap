@@ -121,4 +121,40 @@ class TrapRepositoryRDB extends AbstractRepositoryDRB implements TrapRepositoryI
             $result
         );
     }
+
+    public function createTrap(Trap $trap): void
+    {
+        $request = $this->translateDbName(
+            'INSERT INTO `:db`.mod_traps_objects (name, description) VALUES (:name, :description)'
+        );
+
+        $statement = $this->db->prepare($request);
+        $statement->bindValue(':name', $trap->getName());
+        $statement->bindValue(':description', $trap->getDescription());
+        $statement->execute();
+    }
+
+    public function updateTrap(Trap $trap): void
+    {
+        $request = $this->translateDbName(
+            'UPDATE `:db`.mod_traps_objects SET name = :name, description = :description WHERE id = :id'
+        );
+
+        $statement = $this->db->prepare($request);
+        $statement->bindValue(':name', $trap->getName());
+        $statement->bindValue(':description', $trap->getDescription());
+        $statement->bindValue(':id', $trap->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function deleteTrap(int $id): void
+    {
+        $request = $this->translateDbName(
+            'DELETE FROM `:db`.mod_traps_objects WHERE id = :id'
+        );
+
+        $statement = $this->db->prepare($request);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

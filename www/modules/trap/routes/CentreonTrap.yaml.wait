@@ -3,3 +3,33 @@ trap.findTraps:
   path: /trap/traps
   controller: 'CentreonTrap\Application\Controller\TrapController::findTraps'
   condition: "request.attributes.get('version') >= 20.10"
+
+trap.findTrap:
+  methods: GET
+  path: /trap/trap/{id}
+  controller: 'CentreonTrap\Application\Controller\TrapController::findTrap'
+  condition: "request.attributes.get('version') >= 20.10"
+  requirements:
+    id: '\d+'
+
+trap.createTrap:
+  methods: POST
+  path: /trap/create/
+  controller: 'CentreonTrap\Application\Controller\TrapController::createTrap'
+  condition: "request.attributes.get('version') >= 20.10"
+
+trap.updateTrap:
+  methods: POST
+  path: /trap/update/{id}
+  controller: 'CentreonTrap\Application\Controller\TrapController::updateTrap'
+  condition: "request.attributes.get('version') >= 20.10"
+  requirements:
+    id: '\d+'
+
+trap.deleteTrap:
+  methods: Post
+  path: /trap/delete/{id}
+  controller: 'CentreonTrap\Application\Controller\TrapController::deleteTrap'
+  condition: "request.attributes.get('version') >= 20.10"
+  requirements:
+    id: '\d+'

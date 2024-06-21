@@ -27,4 +27,10 @@ interface TrapRepositoryInterface
     public function findTraps(): array;
 
     public function findTrap(int $id) :?Trap;
+
+    public function createTrap(Trap $trap) :void;
+
+    public function updateTrap(Trap $trap) :void;
+
+    public function deleteTrap(int $id) :void;
 }

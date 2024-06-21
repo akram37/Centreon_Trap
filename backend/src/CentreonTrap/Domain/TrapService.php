@@ -54,4 +54,21 @@ class TrapService implements TrapServiceInterface
     {
         return $this->trapRepository->findTrap($id);
     }
+
+    public function createTrap(Trap $trap): void
+    {
+         $this->trapRepository->createTrap($trap);
+    }
+
+    public function updateTrap(Trap $trap): void
+    {
+        $this->trapRepository->updateTrap($trap);
+    }
+
+    public function deleteTrap(int $id): void
+    {
+        $this->trapRepository->deleteTrap($id);
+    }
+
+
 }

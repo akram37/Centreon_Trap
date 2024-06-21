@@ -25,6 +25,7 @@ namespace CentreonTrap\Application\Controller;
 
 use CentreonTrap\Domain\Interfaces\TrapServiceInterface;
 use Centreon\Domain\RequestParameters\Interfaces\RequestParametersInterface;
+use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
@@ -69,5 +70,57 @@ class TrapController extends AbstractFOSRestController
         ])->setContext($context);
     }
 
+    public function findTrap(int $id): View
+    {
+        $trap = $this->trapService->findTrap($id);
+
+        if ($trap === null) {
+            return $this->view(['message' => 'Trap not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $context = (new Context())->setGroups(['trap_main']);
+
+        return $this->view($trap)->setContext($context);
+    }
+
+    public function createTrap(Request $request): View
+    {
+        $data = json_decode($request->getContent(), true);
+        $trap = new Trap();
+        $trap->setName($data['name']);
+        $trap->setDescription($data['description']);
+        $this->trapService->createTrap($trap);
+
+        return $this->view(['status' => 'Trap created'], Response::HTTP_CREATED);
+    }
+
+    public function updateTrap(int $id, Request $request): View
+    {
+        $data = json_decode($request->getContent(), true);
+        $trap = new Trap();
+        $trap->setId($id);
+        $trap->setName($data['name']);
+        $trap->setDescription($data['description']);
+
+        $trap = $this->trapService->findTrap($id);
+        if ($trap === null) {
+            return $this->view(['message' => 'Trap not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $this->trapService->updateTrap($trap);
+
+        return $this->view(['status' => 'Trap updated'], Response::HTTP_OK);
+    }
+
+    public function deleteTrap(int $id): View
+    {
+        $trap = $this->trapService->findTrap($id);
+        if ($trap === null) {
+            return $this->view(['message' => 'Trap not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $this->trapService->deleteTrap($id);
+        return $this->view(['status' => 'Trap deleted'], Response::HTTP_NO_CONTENT);
+    }
 
 }
